@@ -61,7 +61,7 @@ function employeeQuestions(employeeType) {
 
 // Invokes inquirer in between employee questions
 // Invokes employeeQuestions() or generateIndex()
-// bsed on response
+// based on response
 function pivotQuestion() {
     inquirer
         .prompt([
@@ -79,12 +79,12 @@ function pivotQuestion() {
             }else {
                 indexString = generateIndex(roster);
                 buildFile(indexString);
-                //REMOVE
-                console.log(roster);
             }
         });       
 }
 
+// Builds a string that can be written to file
+// based on inputs from questions
 function generateIndex(data) {
     let indexfront = `<!DOCTYPE html>
     <html lang="en">
@@ -96,7 +96,10 @@ function generateIndex(data) {
         <title>Employee Roster</title>
     </head>
     <body>
-        <Main class="row">`
+        <header class="row justify-content-center text-white bg-primary mb-3">
+            <h1>Team Roster</h1>
+        </header>
+        <Main class="row justify-content-around">`
     let indexBack = `</Main>
     </body>
     </html>`
@@ -124,7 +127,7 @@ function generateIndex(data) {
         }
         
         let index = `<div class="card text-white bg-primary col-sm-6 col-md-4 col-lg-2 m-3">
-        <h5 class="card-header">${data[i].constructor.name}</h5>
+        <h4 class="card-header">${data[i].constructor.name}</h4>
         <div class="card-body">
           <h5 class="card-title">${data[i].name}</h5>
           <p class="card-text">ID: ${data[i].id}</p>
@@ -138,6 +141,8 @@ function generateIndex(data) {
     return returnString;
 }
 
+// Writes a file given an input string
+// and folder path as a process arguement
 function buildFile(data) {
     let path = process.argv[2] !== undefined ? `${process.argv[2]}/` : "";
     fs.writeFile(`${path}index.html`,data, (err) =>
