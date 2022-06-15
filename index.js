@@ -67,7 +67,7 @@ function pivotQuestion() {
         .prompt([
             {
                 type: "list",
-                message: "would you like to add an additional role?",
+                message: "Would you like to add an additional role?",
                 name: "pivot",
                 choices: ["Engineer","Intern","Finish building team"],
             }
@@ -116,7 +116,7 @@ function generateIndex(data) {
                                 response = data[i].officeNumber;}
             break;
             case "Engineer": {category = "GitHub: ";
-                                gitPossible = `href="https://www.github.com/${data[i].github}"`;
+                                gitPossible = `href="https://www.github.com/${data[i].github}" target="_blank"`;
                                 response = `https://www.github.com/${data[i].github}`;}
             break;
             case "Intern": {category = "School: ";
